@@ -12,6 +12,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Using Calculator class to do my division
     let calculator = Calculator()
 
+    let myGreen = UIColor(red: 88/255, green: 185/255, blue: 142/255, alpha: 1)
+    let myRed = UIColor(red: 228/55, green: 56/255, blue: 68/255, alpha: 1)
+    
     @IBOutlet weak var Item1: UITextField!
     
     @IBOutlet weak var Quantity1: UITextField!
@@ -28,19 +31,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func oneCalc(sender: UIButton) {
         newCalc()
-        calcButton.backgroundColor = UIColor.grayColor()
+        calcButton.alpha = 0.9
+        calcButton.backgroundColor = UIColor.lightGrayColor()
     }
     
     // TODO: Set some other customizations
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        calcButton.backgroundColor = UIColor.greenColor()
+        // Clearing out results when changing textfield - let's user know to hit calculate again
+        miniClear()
+        calcButton.backgroundColor = myGreen
         calcButton.setTitle("Calculate", forState: UIControlState.Normal)
     }
     
+ 
+    
     var decimalValue = Double()
     var decimalValue2 = Double()
-
+   
+    
 //CalculateHit - This runs in my oneCalc Button Action
     func newCalc() {
     var priceArray : [Double] = []
@@ -51,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             quantityArray.insert(val2, atIndex: 0)
         
     let result1 = calculator.divide(priceArray[0], val2: quantityArray[0])
-        let decimalValue = Double(round(1000*result1)/1000)
+        let decimalValue = result1
         result1Label.text = (String(format: " $%.2f / unit", decimalValue))
 
     let eval1 = Double(Item2.text!) ?? 0
@@ -59,7 +68,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let eval2 = Double(Quantity2.text!) ?? 0
             quantityArray.insert(eval2, atIndex: 1)
         let result2 = calculator.divide(priceArray[1], val2: quantityArray[1])
-        let decimalValue2 = Double(round(1000*result2)/1000)
+        let decimalValue2 = result2
+//        let decimalValue2 = Double(round(1000*result2)/1000)
         
         result2Label.text = (String(format: " $%.2f / unit", decimalValue2))
         
@@ -72,19 +82,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else if rightPrice < leftPrice {
             differenceOf = leftPrice - rightPrice
         }
+    
+
+        
         if leftPrice < rightPrice {
-            result1Label.backgroundColor = UIColor.greenColor()
-            result2Label.backgroundColor = UIColor.redColor()
-            calcButton.setTitle(String(format: "⬅︎ Save: $%.2f / unit", differenceOf), forState: UIControlState.Normal)
+            result1Label.backgroundColor = myGreen
+            result2Label.backgroundColor = myRed
+            calcButton.setTitle(String(format: "Save: $%.2f / unit", differenceOf), forState: UIControlState.Normal)
         } else if rightPrice < leftPrice {
-            result2Label.backgroundColor = UIColor.greenColor()
-            result1Label.backgroundColor = UIColor.redColor()
-            calcButton.setTitle(String(format: "Save: $%.2f / unit ➡︎", differenceOf), forState: UIControlState.Normal)
+            result2Label.backgroundColor = myGreen
+            result1Label.backgroundColor = myRed
+            calcButton.setTitle(String(format: "Save: $%.2f / unit", differenceOf), forState: UIControlState.Normal)
         } else if leftPrice == rightPrice {
             calcButton.setTitle("Equal", forState: UIControlState.Normal)
             result1Label.backgroundColor = UIColor.whiteColor()
             result2Label.backgroundColor = UIColor.whiteColor()
         }
+    }
+    
+// reset results when some re-edit is taking place.
+    func miniClear() {
+        result1Label.text = ""
+        result2Label.text = ""
+        result1Label.backgroundColor = UIColor.clearColor()
+        result2Label.backgroundColor = UIColor.clearColor()
     }
     
 

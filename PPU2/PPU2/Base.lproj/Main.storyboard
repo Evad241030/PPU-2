@@ -135,20 +135,6 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qft-0O-NXE">
-                                <rect key="frame" x="20" y="274" width="560" height="42"/>
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.21960784310000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Clear All">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="148" width="560" height="24"/>
-                                </variation>
-                                <connections>
-                                    <action selector="ClearAllHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SKe-Fm-f9B"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5Y-Jo-crb">
                                 <rect key="frame" x="20" y="177" width="560" height="89"/>
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.34901960784313724" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
@@ -161,6 +147,20 @@
                                 </state>
                                 <connections>
                                     <action selector="oneCalc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J8O-7j-tU5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qft-0O-NXE">
+                                <rect key="frame" x="20" y="274" width="560" height="42"/>
+                                <color key="backgroundColor" red="0.89411764709999997" green="0.21960784310000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Clear All">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="148" width="560" height="24"/>
+                                </variation>
+                                <connections>
+                                    <action selector="ClearAllHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SKe-Fm-f9B"/>
                                 </connections>
                             </button>
                         </subviews>
