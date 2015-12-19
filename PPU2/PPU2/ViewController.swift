@@ -12,11 +12,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Using Calculator class to do my division
     let calculator = Calculator()
 
+    // Setting Custom colors
     let myGreen = UIColor(red: 88/255, green: 185/255, blue: 142/255, alpha: 1)
     let myRed = UIColor(red: 228/55, green: 56/255, blue: 68/255, alpha: 1)
     
-    
-    
+
     @IBOutlet weak var Item1: UITextField!
     
     @IBOutlet weak var Quantity1: UITextField!
@@ -34,28 +34,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var clearBtn: UIButton!
     
     
-    
+// Main Calculation button - One button for simplicity
     @IBAction func oneCalc(sender: UIButton) {
         newCalc()
-//        calcButton.alpha = 1
-        UIView.animateWithDuration(0.2) { () -> Void in
-            self.calcButton.backgroundColor = UIColor.lightGrayColor()
-        }
+    // Changing color to indicate calculation is complete.
+        calcButton.backgroundColor = UIColor.lightGrayColor()
+
 
     }
     
-    // TODO: Set some other customizations
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        // Clearing out results when changing textfield - let's user know to hit calculate again
+        // Clears out results when changing values - let's user know to hit calculate again
         miniClear()
         calcButton.backgroundColor = myGreen
         calcButton.setTitle("Calculate", forState: UIControlState.Normal)
         
     }
-    
- 
-    
+
     var decimalValue = Double()
     var decimalValue2 = Double()
    
@@ -68,6 +64,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         priceArray.insert(val1, atIndex: 0)
     let val2 = Double(Quantity1.text!) ?? 0.0
             quantityArray.insert(val2, atIndex: 0)
+  
+// FIXME: How do I format 2 decimal places for greatest accuracy?
         
     let result1 = calculator.divide(priceArray[0], val2: quantityArray[0])
         let decimalValue = result1
@@ -108,23 +106,37 @@ class ViewController: UIViewController, UITextFieldDelegate {
             result1Label.backgroundColor = UIColor.whiteColor()
             result2Label.backgroundColor = UIColor.whiteColor()
         }
+// FIXME: Not able to get the result1 label to fly in from left side of screen
+        result1Label.center.x = self.view.frame.width + 200
+        result2Label.center.x = self.view.frame.width + 200
+
+        
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
+// FIXME: I had to guess this position - not sure how to get an exact value.
+            self.result1Label.center.x = self.view.frame.width - 248
+            self.result2Label.center.x = self.view.frame.width - 248
+            }, completion: nil)
         
         UIView.animateWithDuration(0.2) { () -> Void in
             self.result1Label.alpha = 1
             self.result2Label.alpha = 1
         }
-        
-        
+        dismissKeyboard()
+
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 // reset results when some re-edit is taking place.
     func miniClear() {
-        UIView.animateWithDuration(0.5) { () -> Void in
+        
+        UIView.animateWithDuration(0.3) { () -> Void in
             self.result1Label.alpha = 0
             self.result2Label.alpha = 0
         }
-//        result1Label.backgroundColor = UIColor.clearColor()
-//        result2Label.backgroundColor = UIColor.clearColor()
+
     }
     
 
@@ -137,17 +149,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Quantity2.text = ""
         calcButton.setTitle("Calculate", forState: UIControlState.Normal)
         Item1.becomeFirstResponder()
-        UIView.animateWithDuration(0.5) { () -> Void in
+        UIView.animateWithDuration(0.3) { () -> Void in
             self.result1Label.alpha = 0
             self.result2Label.alpha = 0
-            
         }
         
+        
+        UIView.animateWithDuration(10, delay: 0.3, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
+            self.result1Label.center.x = self.view.frame.width - 200
+            self.result2Label.center.x = self.view.frame.width - 200
+            }, completion: nil)
     }
     
     @IBAction func ClearAllHit(sender: UIButton) {
         clear()
-        
     }
     
     override func viewDidLoad() {
@@ -157,18 +172,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Item2.delegate = self
         Quantity2.delegate = self
         Item1.center.x = self.view.frame.width - 200
-//        clearBtn.center.x = self.view.frame.width - 200
 
-        UIView.animateWithDuration(1.2, delay: 0.5, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
             self.Item1.center.x = self.view.frame.width + 200
-//            self.clearBtn.center.x = self.view.frame.width + 200
-
-            
-            //            self.calcButton.alpha = 1.0
             }, completion: nil)
         
         Item1.becomeFirstResponder()
-        //        calcButton.alpha = 0
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
