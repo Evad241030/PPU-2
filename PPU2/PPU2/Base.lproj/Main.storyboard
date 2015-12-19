@@ -196,6 +196,7 @@
                         <outlet property="Quantity1" destination="akB-fa-jci" id="aTv-RR-lV4"/>
                         <outlet property="Quantity2" destination="rux-3X-Ljh" id="ylF-Qc-CHO"/>
                         <outlet property="calcButton" destination="B5Y-Jo-crb" id="nhk-PU-Bgm"/>
+                        <outlet property="clearBtn" destination="qft-0O-NXE" id="G0r-pc-3pI"/>
                         <outlet property="result1Label" destination="Lat-3Z-Kbh" id="GXd-2S-inU"/>
                         <outlet property="result2Label" destination="H1o-KJ-hlV" id="HWk-Ah-aBn"/>
                     </connections>
