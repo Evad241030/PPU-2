@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension Double {
+    var asLocaleCurrency:String {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = NSLocale.currentLocale()
+        return formatter.stringFromNumber(self)!
+    }
+}
+
+
 class ViewController: UIViewController, UITextFieldDelegate {
     // Using Calculator class to do my division
     let calculator = Calculator()
@@ -33,22 +43,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var clearBtn: UIButton!
     
+    @IBOutlet weak var disclaimerLabel: UILabel!
     
 // Main Calculation button - One button for simplicity
     @IBAction func oneCalc(sender: UIButton) {
         newCalc()
     // Changing color to indicate calculation is complete.
         calcButton.backgroundColor = UIColor.lightGrayColor()
-
-
+        disclaimerLabel.text = "*Results rounded to the nearest hundreth."
     }
     
     
     func textFieldDidBeginEditing(textField: UITextField) {
         // Clears out results when changing values - let's user know to hit calculate again
         miniClear()
+       
+        if calcButton.backgroundColor == UIColor.lightGrayColor() {
         calcButton.backgroundColor = myGreen
-        calcButton.setTitle("Calculate", forState: UIControlState.Normal)
+        calcButton.setTitle("COMPARE", forState: UIControlState.Normal)
+            disclaimerLabel.text = ""
+
+        }
+        
         
     }
 
@@ -69,17 +85,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     let result1 = calculator.divide(priceArray[0], val2: quantityArray[0])
         let decimalValue = result1
-        result1Label.text = (String(format: " $%.2f / unit", decimalValue))
-
+        result1Label.text = " \(result1.asLocaleCurrency) / unit"
+    
     let eval1 = Double(Item2.text!) ?? 0
             priceArray.insert(eval1, atIndex: 1)
         let eval2 = Double(Quantity2.text!) ?? 0
             quantityArray.insert(eval2, atIndex: 1)
         let result2 = calculator.divide(priceArray[1], val2: quantityArray[1])
         let decimalValue2 = result2
-//        let decimalValue2 = Double(round(1000*result2)/1000)
         
-        result2Label.text = (String(format: " $%.2f / unit", decimalValue2))
+        result2Label.text = " \(result2.asLocaleCurrency) / unit"
         
         let leftPrice = decimalValue
         let rightPrice = decimalValue2
@@ -96,13 +111,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if leftPrice < rightPrice {
             result1Label.backgroundColor = myGreen
             result2Label.backgroundColor = myRed
-            calcButton.setTitle(String(format: "Save: $%.2f / unit", differenceOf), forState: UIControlState.Normal)
+            calcButton.setTitle(String(format: "Save: \(differenceOf.asLocaleCurrency) / unit*"), forState: UIControlState.Normal)
         } else if rightPrice < leftPrice {
             result2Label.backgroundColor = myGreen
             result1Label.backgroundColor = myRed
-            calcButton.setTitle(String(format: "Save: $%.2f / unit", differenceOf), forState: UIControlState.Normal)
+            calcButton.setTitle(String(format: "Save: \(differenceOf.asLocaleCurrency) / unit*"), forState: UIControlState.Normal)
         } else if leftPrice == rightPrice {
-            calcButton.setTitle("Equal", forState: UIControlState.Normal)
+            calcButton.setTitle("Equal*", forState: UIControlState.Normal)
             result1Label.backgroundColor = UIColor.whiteColor()
             result2Label.backgroundColor = UIColor.whiteColor()
         }
@@ -115,12 +130,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
 // FIXME: I had to guess this position - not sure how to get an exact value.
             self.result1Label.center.x = self.view.frame.width - 248
             self.result2Label.center.x = self.view.frame.width - 248
+            self.result1Label.alpha = 1
+            self.result2Label.alpha = 1
             }, completion: nil)
-        
+        /*
         UIView.animateWithDuration(0.2) { () -> Void in
             self.result1Label.alpha = 1
             self.result2Label.alpha = 1
         }
+*/
+
         dismissKeyboard()
 
     }
@@ -132,11 +151,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
 // reset results when some re-edit is taking place.
     func miniClear() {
         
+        if result1Label.alpha == 1 {
         UIView.animateWithDuration(0.3) { () -> Void in
             self.result1Label.alpha = 0
             self.result2Label.alpha = 0
         }
-
+        }
+        
+        
+        
     }
     
 
@@ -147,22 +170,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Item2.text = ""
         Quantity1.text = ""
         Quantity2.text = ""
-        calcButton.setTitle("Calculate", forState: UIControlState.Normal)
+        calcButton.setTitle("COMPARE", forState: UIControlState.Normal)
         Item1.becomeFirstResponder()
         UIView.animateWithDuration(0.3) { () -> Void in
             self.result1Label.alpha = 0
             self.result2Label.alpha = 0
         }
-        
-        
+        /*
         UIView.animateWithDuration(10, delay: 0.3, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
             self.result1Label.center.x = self.view.frame.width - 200
             self.result2Label.center.x = self.view.frame.width - 200
             }, completion: nil)
+        */
     }
     
     @IBAction func ClearAllHit(sender: UIButton) {
         clear()
+        disclaimerLabel.text = ""
     }
     
     override func viewDidLoad() {
@@ -171,17 +195,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Quantity1.delegate = self
         Item2.delegate = self
         Quantity2.delegate = self
-        Item1.center.x = self.view.frame.width - 200
-
+        calcButton.center.x = self.view.frame.width - 200
+        clearBtn.center.x = self.view.frame.width + 200
+        
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
-            self.Item1.center.x = self.view.frame.width + 200
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
+
+            self.calcButton.center.x = self.view.frame.width + 200
+            self.clearBtn.center.x = self.view.frame.width - 200
+
             }, completion: nil)
         
         Item1.becomeFirstResponder()
-
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

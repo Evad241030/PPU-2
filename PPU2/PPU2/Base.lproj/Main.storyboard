@@ -24,7 +24,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3rV-vf-p2C">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="141"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Price" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4ci-eJ-G1Y">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4ci-eJ-G1Y">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="47"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="KN7-9U-3tX"/>
@@ -44,7 +44,7 @@
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Quantity" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="akB-fa-jci">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="akB-fa-jci">
                                                 <rect key="frame" x="0.0" y="47" width="280" height="47"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="47" id="1ck-uq-90m"/>
@@ -75,7 +75,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qOq-NX-FZz">
                                         <rect key="frame" x="280" y="0.0" width="280" height="141"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Price" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BUX-uL-Crr">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BUX-uL-Crr">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="47"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="XpH-Ke-pyL"/>
@@ -95,7 +95,7 @@
                                                     </mask>
                                                 </variation>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Quantity" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rux-3X-Ljh">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rux-3X-Ljh">
                                                 <rect key="frame" x="0.0" y="47" width="280" height="47"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="8Wd-TZ-aJp"/>
@@ -137,12 +137,12 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5Y-Jo-crb">
                                 <rect key="frame" x="20" y="177" width="560" height="89"/>
-                                <color key="backgroundColor" red="0.13725490196078433" green="0.34901960784313724" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.34509803919999998" green="0.72549019609999998" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="89" id="vDM-Uc-uCb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="Calculate">
+                                <state key="normal" title="COMPARE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -153,7 +153,7 @@
                                 <rect key="frame" x="20" y="274" width="560" height="42"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.21960784310000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Clear All">
+                                <state key="normal" title="Start Over">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=compact" misplaced="YES">
@@ -163,6 +163,12 @@
                                     <action selector="ClearAllHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SKe-Fm-f9B"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itF-in-fEI">
+                                <rect key="frame" x="20" y="239" width="560" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.53725490200000003" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -176,10 +182,13 @@
                             <constraint firstItem="zUo-Ld-wai" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Kvv-cn-aog"/>
                             <constraint firstItem="B5Y-Jo-crb" firstAttribute="top" secondItem="zUo-Ld-wai" secondAttribute="bottom" constant="8" id="NCj-0j-LgE"/>
                             <constraint firstItem="qft-0O-NXE" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Oto-3i-HFb"/>
+                            <constraint firstItem="itF-in-fEI" firstAttribute="top" secondItem="qft-0O-NXE" secondAttribute="bottom" constant="-77" id="ROF-3Y-9qk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zUo-Ld-wai" secondAttribute="trailing" id="V2l-pi-s6A"/>
                             <constraint firstItem="B5Y-Jo-crb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="177" id="aUh-01-6ML"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zUo-Ld-wai" secondAttribute="trailing" id="eay-ub-bWj"/>
                             <constraint firstItem="qft-0O-NXE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hf4-Er-SSo"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="itF-in-fEI" secondAttribute="leading" id="hqq-L7-yUs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="itF-in-fEI" secondAttribute="trailing" id="wJc-So-gGY"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -197,6 +206,7 @@
                         <outlet property="Quantity2" destination="rux-3X-Ljh" id="ylF-Qc-CHO"/>
                         <outlet property="calcButton" destination="B5Y-Jo-crb" id="nhk-PU-Bgm"/>
                         <outlet property="clearBtn" destination="qft-0O-NXE" id="G0r-pc-3pI"/>
+                        <outlet property="disclaimerLabel" destination="itF-in-fEI" id="Mij-7Z-HRq"/>
                         <outlet property="result1Label" destination="Lat-3Z-Kbh" id="GXd-2S-inU"/>
                         <outlet property="result2Label" destination="H1o-KJ-hlV" id="HWk-Ah-aBn"/>
                     </connections>
