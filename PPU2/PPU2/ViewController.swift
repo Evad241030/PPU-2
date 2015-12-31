@@ -45,12 +45,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var disclaimerLabel: UILabel!
     
+    @IBOutlet weak var resultsStack: UIStackView!
+    
+    
 // Main Calculation button - One button for simplicity
     @IBAction func oneCalc(sender: UIButton) {
         newCalc()
     // Changing color to indicate calculation is complete.
         calcButton.backgroundColor = UIColor.lightGrayColor()
-        disclaimerLabel.text = "*Results rounded to the nearest hundreth."
+        disclaimerLabel.text = "*Rounded to  nearest 100th."
     }
     
     
@@ -80,8 +83,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         priceArray.insert(val1, atIndex: 0)
     let val2 = Double(Quantity1.text!) ?? 0.0
             quantityArray.insert(val2, atIndex: 0)
-  
-// FIXME: How do I format 2 decimal places for greatest accuracy?
         
     let result1 = calculator.divide(priceArray[0], val2: quantityArray[0])
         let decimalValue = result1
@@ -106,8 +107,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             differenceOf = leftPrice - rightPrice
         }
     
-
-        
         if leftPrice < rightPrice {
             result1Label.backgroundColor = myGreen
             result2Label.backgroundColor = myRed
@@ -120,27 +119,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
             calcButton.setTitle("Equal*", forState: UIControlState.Normal)
             result1Label.backgroundColor = UIColor.whiteColor()
             result2Label.backgroundColor = UIColor.whiteColor()
+            
         }
-// FIXME: Not able to get the result1 label to fly in from left side of screen
-        result1Label.center.x = self.view.frame.width + 200
-        result2Label.center.x = self.view.frame.width + 200
-
         
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
-// FIXME: I had to guess this position - not sure how to get an exact value.
-            self.result1Label.center.x = self.view.frame.width - 248
-            self.result2Label.center.x = self.view.frame.width - 248
-            self.result1Label.alpha = 1
-            self.result2Label.alpha = 1
-            }, completion: nil)
-        /*
-        UIView.animateWithDuration(0.2) { () -> Void in
-            self.result1Label.alpha = 1
-            self.result2Label.alpha = 1
+        if result1Label.alpha == 0 {
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
+                self.resultsStack.center.x = self.view.frame.width - 200
+                self.result1Label.alpha = 1
+                self.result2Label.alpha = 1
+                self.resultsStack.alpha = 1
+                }, completion: nil)
+            dismissKeyboard()
         }
-*/
-
-        dismissKeyboard()
 
     }
     
@@ -152,14 +142,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func miniClear() {
         
         if result1Label.alpha == 1 {
-        UIView.animateWithDuration(0.3) { () -> Void in
+        UIView.animateWithDuration(0.5) { () -> Void in
             self.result1Label.alpha = 0
             self.result2Label.alpha = 0
         }
         }
         
-        
-        
+        resultsStack.center.x = self.view.frame.width + 200
+        resultsStack.alpha = 0
+                
     }
     
 
@@ -176,12 +167,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.result1Label.alpha = 0
             self.result2Label.alpha = 0
         }
-        /*
-        UIView.animateWithDuration(10, delay: 0.3, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
-            self.result1Label.center.x = self.view.frame.width - 200
-            self.result2Label.center.x = self.view.frame.width - 200
-            }, completion: nil)
-        */
     }
     
     @IBAction func ClearAllHit(sender: UIButton) {
@@ -197,11 +182,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         Quantity2.delegate = self
         calcButton.center.x = self.view.frame.width - 200
         clearBtn.center.x = self.view.frame.width + 200
+        resultsStack.center.x = self.view.frame.width + 200
+        resultsStack.alpha = 0
+        
         
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target:self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
+        
+        // Setting these to an initial state to avoid confusion - delete if necessary
+        result1Label.alpha = 0
+        result2Label.alpha = 0
+        
+        
+        UIView.animateWithDuration(0.7, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: { () -> Void in
 
             self.calcButton.center.x = self.view.frame.width + 200
             self.clearBtn.center.x = self.view.frame.width - 200
