@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22206A381BE4490A00EBC506 /* PPU2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPU2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22206A381BE4490A00EBC506 /* Precio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Precio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22206A3B1BE4490A00EBC506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22206A3D1BE4490A00EBC506 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		22206A401BE4490A00EBC506 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		22206A391BE4490A00EBC506 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22206A381BE4490A00EBC506 /* PPU2.app */,
+				22206A381BE4490A00EBC506 /* Precio.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22206A371BE4490A00EBC506 /* PPU2 */ = {
+		22206A371BE4490A00EBC506 /* Precio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22206A4A1BE4490A00EBC506 /* Build configuration list for PBXNativeTarget "PPU2" */;
+			buildConfigurationList = 22206A4A1BE4490A00EBC506 /* Build configuration list for PBXNativeTarget "Precio" */;
 			buildPhases = (
 				22206A341BE4490A00EBC506 /* Sources */,
 				22206A351BE4490A00EBC506 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = PPU2;
+			name = Precio;
 			productName = PPU2;
-			productReference = 22206A381BE4490A00EBC506 /* PPU2.app */;
+			productReference = 22206A381BE4490A00EBC506 /* Precio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 22206A331BE4490A00EBC506 /* Build configuration list for PBXProject "PPU2" */;
+			buildConfigurationList = 22206A331BE4490A00EBC506 /* Build configuration list for PBXProject "Precio" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22206A371BE4490A00EBC506 /* PPU2 */,
+				22206A371BE4490A00EBC506 /* Precio */,
 			);
 		};
 /* End PBXProject section */
@@ -253,8 +253,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				INFOPLIST_FILE = PPU2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.producerdavego.Checklists.PPU2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.producerdavego.Precio;
+				PRODUCT_NAME = Precio;
 			};
 			name = Debug;
 		};
@@ -264,15 +264,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				INFOPLIST_FILE = PPU2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.producerdavego.Checklists.PPU2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.producerdavego.Precio;
+				PRODUCT_NAME = Precio;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22206A331BE4490A00EBC506 /* Build configuration list for PBXProject "PPU2" */ = {
+		22206A331BE4490A00EBC506 /* Build configuration list for PBXProject "Precio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22206A481BE4490A00EBC506 /* Debug */,
@@ -281,7 +281,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22206A4A1BE4490A00EBC506 /* Build configuration list for PBXNativeTarget "PPU2" */ = {
+		22206A4A1BE4490A00EBC506 /* Build configuration list for PBXNativeTarget "Precio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22206A4B1BE4490A00EBC506 /* Debug */,

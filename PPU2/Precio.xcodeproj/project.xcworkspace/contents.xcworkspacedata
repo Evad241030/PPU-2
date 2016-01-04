@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PPU2.xcodeproj">
+      location = "self:/Users/davidgonzalez/Developer/PPU 2/PPU2/Precio.xcodeproj">
    </FileRef>
 </Workspace>
